@@ -14,6 +14,7 @@
 		DB266CFC1EB18E1D000BAC12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB266CFA1EB18E1D000BAC12 /* LaunchScreen.storyboard */; };
 		DB266D051EB18F4D000BAC12 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB266D041EB18F4D000BAC12 /* Pokemon.swift */; };
 		DBEA49EA1EB195E400A48E69 /* PokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEA49E91EB195E400A48E69 /* PokeCell.swift */; };
+		DBEA49EC1EB1990800A48E69 /* pokemon.csv in Resources */ = {isa = PBXBuildFile; fileRef = DBEA49EB1EB1990800A48E69 /* pokemon.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DB266CFD1EB18E1D000BAC12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB266D041EB18F4D000BAC12 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		DBEA49E91EB195E400A48E69 /* PokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeCell.swift; sourceTree = "<group>"; };
+		DBEA49EB1EB1990800A48E69 /* pokemon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pokemon.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				DB266CF31EB18E1D000BAC12 /* MainVC.swift */,
 				DB266CF51EB18E1D000BAC12 /* Main.storyboard */,
 				DB266CF81EB18E1D000BAC12 /* Assets.xcassets */,
+				DBEA49EB1EB1990800A48E69 /* pokemon.csv */,
 				DB266CFA1EB18E1D000BAC12 /* LaunchScreen.storyboard */,
 				DB266CFD1EB18E1D000BAC12 /* Info.plist */,
 			);
@@ -147,6 +150,7 @@
 			files = (
 				DB266CFC1EB18E1D000BAC12 /* LaunchScreen.storyboard in Resources */,
 				DB266CF91EB18E1D000BAC12 /* Assets.xcassets in Resources */,
+				DBEA49EC1EB1990800A48E69 /* pokemon.csv in Resources */,
 				DB266CF71EB18E1D000BAC12 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
