@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
    
+    //Array:
+    var pokemon = [Pokemon]()
+    
+    //Music player
+    var musicPlayer: AVAudioPlayer!
+    
     
     @IBOutlet weak var myCollectionView: UICollectionView!
-    var pokemon: Pokemon!
+   // var pokemon: Pokemon!
+    
     
     
     
@@ -21,10 +29,51 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        audioInit()
+        parsePokemonCsv()
     
     
     }
     
+    func audioInit(){
+        let path = Bundle.main.path(forResource: "music", ofType: "mp3")!
+        
+        do{
+            
+            musicPlayer = try AVAudioPlayer(contentsOf: URL(string: path)!)
+            musicPlayer.prepareToPlay()
+            musicPlayer.numberOfLoops = -1
+            //musicPlayer.play()
+        }catch let err as NSError{
+            print(err.debugDescription)
+        }
+    }
+    
+    func parsePokemonCsv(){
+        
+        let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")!
+        
+        do{
+            let csv = try CSV(contentsOfURL: path)
+            let rows = csv.rows
+            
+            //print(rows)
+            
+            for row in rows{
+                let pokeId = Int(row["id"]!)!
+                let name = row["identifier"]!
+                
+                let poke = Pokemon(name: name, pokedexId: pokeId)
+                pokemon.append(poke)
+            }
+            
+        }catch let err as NSError{
+            print(err.debugDescription)
+        }
+        
+    
+        
+}
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -32,7 +81,7 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 719
+        return pokemon.count
     }
     
     
@@ -42,9 +91,9 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell{
             
-            let pokemon = Pokemon(name: "Pokemon", pokedexId: indexPath.row)
+            let poke = pokemon[indexPath.row]
             
-            cell.configureCell(pokemon: pokemon)
+            cell.configureCell(poke)
             
             return cell
         }else{
@@ -65,6 +114,17 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     
+    @IBAction func musicBtnPressed(_ sender: UIButton) {
+        
+        if musicPlayer.isPlaying {
+            musicPlayer.pause()
+            sender.alpha = 0.3
+        }else{
+            musicPlayer.play()
+            sender.alpha = 1
+        }
+        
+    }
 
     
 
